@@ -57,6 +57,6 @@
 	
 	 Wait for the bash script to execute. In another terminal 
 	
-	 ```
-	 docker-compose exec alpha_sim /bin/bash
+	 ```bash
+	 docker-compose -f docker-compose_gpu.yml exec ros_noetic /bin/bash
 	 ```
