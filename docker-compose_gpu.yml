@@ -1,0 +1,25 @@
+services:
+    ros_noetic:
+        image: noetic-ros-base:latest
+        stdin_open: true
+        tty: true
+        build: .
+        #user: agv
+        privileged: true
+        environment: 
+            - DISPLAY=${DISPLAY}
+            - QT_X11_NO_MITSHM=1
+            - NVIDIA_VISIBLE_DEVICES=all
+            - NVIDIA_DRIVER_CAPABILITIES=all
+        volumes: 
+            - /tmp/.X11-unix:/tmp/.X11-unix:rw
+            - ./src:/home/<workspace>
+        network_mode: host
+        deploy: 
+            resources: 
+                reservations:
+                    devices: 
+                    -   driver: nvidia
+                        count: all
+                        capabilities: [gpu]
+
