@@ -39,6 +39,8 @@
   **Instructions to build the image and run the container**
 
 - Place the Dockerfile, and the docker-compose_gpu.yml file inside ~/your_workspace/. **NOTE:** Your entire src/ folder will be mounted as a volume in the container.
+- Replace `<workspace>` in `docker-compose_gpu.yml` with your_workspace
+- Replace `workspace` in `Dockerfile` with your_workspace
 
 - To build the image:
 
