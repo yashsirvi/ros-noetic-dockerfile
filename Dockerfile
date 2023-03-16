@@ -19,7 +19,6 @@ RUN sudo apt-get install -y python3-rosdep python3-rosinstall python3-rosinstall
 RUN sudo apt-get install -y python3-rosdep
 RUN sudo apt-get install -y ros-noetic-catkin python3-catkin-tools
 
-RUN . /opt/ros/noetic/setup.sh
 ENV ROS_PACKAGE_PATH="/opt/ros/noetic/share"
 RUN echo 'debconf debconf/frontend select Noninteractive' | sudo debconf-set-selections
 RUN sudo apt-get install -y ros-noetic-ackermann-msgs
@@ -35,12 +34,12 @@ RUN sudo apt-get install -y ros-noetic-turtlebot3-gazebo
 RUN sudo apt-get install -y ros-noetic-joy
 RUN sudo apt-get install -y ros-noetic-rosserial
 RUN wget https://raw.githubusercontent.com/ros/rosdistro/master/ros.asc -O - | sudo apt-key add -
-RUN sudo sh -c 'echo "deb [arch=$(dpkg --print-architecture)]  http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
+# RUN sudo sh -c 'echo "deb [arch=$(dpkg --print-architecture)]  http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
 
 RUN sudo apt-get install -y zsh zsh-autosuggestions zsh-syntax-highlighting git
 
 # Installing ROS dependencies for turtlebot3
-RUN sudo sudo apt-get install ros-noetic-joy ros-noetic-teleop-twist-joy \
+RUN sudo sudo apt-get install -y ros-noetic-joy ros-noetic-teleop-twist-joy \
   ros-noetic-teleop-twist-keyboard ros-noetic-laser-proc \
   ros-noetic-rgbd-launch ros-noetic-rosserial-arduino \
   ros-noetic-rosserial-python ros-noetic-rosserial-client \
@@ -50,7 +49,7 @@ RUN sudo sudo apt-get install ros-noetic-joy ros-noetic-teleop-twist-joy \
   ros-noetic-gmapping ros-noetic-navigation ros-noetic-interactive-markers
 
 # Installing turtlebot3 packages
-RUN sudo apt install ros-noetic-dynamixel-sdk \
+RUN sudo apt install -y ros-noetic-dynamixel-sdk \
     ros-noetic-turtlebot3-msgs \
     ros-noetic-turtlebot3
 
